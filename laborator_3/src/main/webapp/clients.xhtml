@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Client List</title>
+</h:head>
+<h:body>
+    <h1>Client List</h1>
+    <h:form id="clientForm">
+        <p:dataTable id="clientTable" value="#{clientBean.clients}" var="client">
+            <p:column headerText="ID">
+                <h:outputText value="#{client.id}" />
+            </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{client.name}" />
+            </p:column>
+            <p:column headerText="Date of Birth">
+                <h:outputText value="#{client.date_of_birth}" />
+            </p:column>
+            <p:column headerText="Email">
+                <h:outputText value="#{client.email}" />
+            </p:column>
+            <p:column headerText="Phone Number">
+                <h:outputText value="#{client.phone_number}" />
+            </p:column>
+            <p:column>
+                <p:commandButton value="Edit" icon="pi pi-pencil"
+                                 actionListener="#{clientBean.prepareEdit(client)}"
+                                 update=":clientForm:clientDialog" oncomplete="PF('clientDialog').show();" />
+            </p:column>
+        </p:dataTable>
+
+        <p:commandButton value="Add New Client" icon="pi pi-plus"
+                         actionListener="#{clientBean.prepareNewClient}"
+                         update=":clientForm:clientDialog" oncomplete="PF('clientDialog').show();" />
+
+        <!-- Dialog for Adding/Editing Client -->
+        <p:dialog id="clientDialog" widgetVar="clientDialog" header="Client Details" modal="true"
+                  resizable="false" width="400">
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel for="name" value="Name:" />
+                <p:inputText id="name" value="#{clientBean.currentClient.name}" required="true" />
+
+                <h:outputLabel for="dob" value="Date of Birth:" />
+                <p:calendar id="dob" value="#{clientBean.currentClient.date_of_birth}" pattern="yyyy-MM-dd"
+                            showIcon="true" required="true" />
+
+                <h:outputLabel for="email" value="Email:" />
+                <p:inputText id="email" value="#{clientBean.currentClient.email}" required="true" />
+
+                <h:outputLabel for="phone" value="Phone Number:" />
+                <p:inputText id="phone" value="#{clientBean.currentClient.phone_number}" required="false" />
+            </h:panelGrid>
+
+            <p:commandButton value="Save" actionListener="#{clientBean.saveClient}"
+                             update=":clientForm:clientTable" oncomplete="PF('clientDialog').hide();" />
+            <p:commandButton value="Cancel" onclick="PF('clientDialog').hide();" type="button" />
+        </p:dialog>
+    </h:form>
+</h:body>
+</html>
