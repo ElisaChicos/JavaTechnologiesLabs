@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition>
+
+    <h:form id="dataForm">
+        <h2>Data List</h2>
+        <p:dataTable id="dataTable" value="#{dataList}" var="item">
+            <p:column headerText="ID">
+                <h:outputText value="#{item.id}" />
+            </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{item.name}" />
+            </p:column>
+
+            <p:column headerText="Date of Birth" rendered="#{bean.isClient()}">
+                <h:outputText value="#{item.date_of_birth}" />
+            </p:column>
+
+            <p:column headerText="Email" rendered="#{bean.isClient()}">
+                <h:outputText value="#{item.email}" />
+            </p:column>
+
+            <p:column headerText="Phone Number" rendered="#{bean.isClient()}">
+                <h:outputText value="#{item.phone_number}" />
+            </p:column>
+
+            <p:column headerText="Description" rendered="#{bean.isProduct()}">
+                <h:outputText value="#{item.description}" />
+            </p:column>
+
+            <p:column headerText="Price" rendered="#{bean.isProduct()}">
+                <h:outputText value="#{item.price}">
+                    <f:convertNumber type="currency" currencySymbol="$" />
+                </h:outputText>
+            </p:column>
+
+            <p:column>
+                <p:commandButton value="Edit" icon="pi pi-pencil"
+                                 actionListener="#{bean.prepareEdit(item)}"
+                                 update=":dataForm:editDialog"
+                                 oncomplete="PF('editDialog').show();">
+                    <f:setPropertyActionListener target="#{dialogTitle}" value="Edit" />
+                </p:commandButton>
+            </p:column>
+        </p:dataTable>
+
+        <p:commandButton value="Add New" icon="pi pi-plus"
+                         actionListener="#{bean.prepareNewItem}"
+                         update=":dataForm:editDialog"
+                         oncomplete="PF('editDialog').show();">
+            <f:setPropertyActionListener target="#{dialogTitle}" value="Add Client" />
+        </p:commandButton>
+
+        <p:dialog id="editDialog" widgetVar="editDialog" header="#{dialogTitle}" modal="true" resizable="false" width="400">
+            <ui:include src="#{editTemplate}">
+                <ui:param name="bean" value="#{bean}" />
+            </ui:include>
+        </p:dialog>
+    </h:form>
+
+</ui:composition>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <title>Application Title</title>
+</h:head>
+<h:body>
+
+    <!-- Header Section -->
+    <ui:include src="/WEB-INF/templates/header.xhtml" />
+
+    <!-- Menu Section -->
+    <ui:include src="/WEB-INF/templates/menu.xhtml" />
+
+    <!-- Main Content Section -->
+    <h:panelGroup layout="block" style="padding: 20px;">
+        <ui:insert name="content">
+            <!-- Default content goes here if not overridden -->
+            <h:outputText value="Content goes here." />
+        </ui:insert>
+    </h:panelGroup>
+
+    <!-- Footer Section -->
+    <ui:include src="/WEB-INF/templates/footer.xhtml" />
+
+</h:body>
+</html>
