@@ -1,0 +1,33 @@
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+<persistence-unit name="Lab5PU" transaction-type="JTA">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <jta-data-source>java:comp/env/jdbc/lab3</jta-data-source>
+    <class>org.laborator.lab3.Product</class>
+    <class>org.laborator.lab3.Client</class>
+</persistence-unit>
+
+
+<persistence-unit name="Lab5PU-Test" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <class>org.laborator.lab3.Product</class>
+    <class>org.laborator.lab3.Client</class>
+
+    <properties>
+        <!-- Database connection -->
+        <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/lab3"/>
+        <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+        <property name="jakarta.persistence.jdbc.password" value="ella"/>
+        <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+
+        <!-- Hibernate-specific properties -->
+        <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+        <property name="hibernate.show_sql" value="true"/>
+        <property name="hibernate.format_sql" value="true"/>
+        <property name="hibernate.hbm2ddl.auto" value="update"/>
+    </properties>
+</persistence-unit>
+</persistence>

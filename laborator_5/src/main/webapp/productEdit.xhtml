@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition>
+
+    <h:panelGrid columns="2" cellpadding="5">
+        <h:outputLabel for="name" value="Name:" />
+        <p:inputText id="name" value="#{bean.currentItem.name}" required="true" />
+
+        <h:outputLabel for="description" value="Description:" />
+        <p:inputText id="description" value="#{bean.currentItem.description}" />
+
+        <h:outputLabel for="price" value="Price:" />
+        <p:inputText id="price" value="#{bean.currentItem.price}" required="true" />
+    </h:panelGrid>
+
+    <p:commandButton value="Save" actionListener="#{bean.saveItem}"
+                     update=":dataForm:dataTable" oncomplete="PF('editDialog').hide();" />
+    <p:commandButton value="Cancel" onclick="PF('editDialog').hide();" type="button" />
+
+</ui:composition>
+</html>
