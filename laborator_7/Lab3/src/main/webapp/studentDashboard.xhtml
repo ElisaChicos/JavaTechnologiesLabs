@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Student Dashboard</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h1>Welcome, Student</h1>
+
+        <p:commandButton value="Submit Evaluation" action="evaluationSubmission.xhtml" />
+
+        <h2>Your Submitted Evaluations</h2>
+        <p:dataTable value="#{studentDashboardBean.evaluations}" var="evaluation" border="1" lazy="false">
+            <p:column headerText="Teacher">
+                <h:outputText value="#{evaluation.teacher.username}" />
+            </p:column>
+            <p:column headerText="Activity">
+                <h:outputText value="#{evaluation.activity}" />
+            </p:column>
+            <p:column headerText="Activity Type">
+                <h:outputText value="#{evaluation.activityType}" />
+            </p:column>
+            <p:column headerText="Grade">
+                <h:outputText value="#{evaluation.grade}" />
+            </p:column>
+            <p:column headerText="Comment">
+                <h:outputText value="#{evaluation.comment}" />
+            </p:column>
+            <p:column headerText="Timestamp">
+                <h:outputText value="#{evaluation.timestamp}" />
+            </p:column>
+        </p:dataTable>
+
+        <!-- Logout link -->
+        <h:link value="Logout" outcome="login.xhtml" />
+    </h:form>
+</h:body>
+</html>
