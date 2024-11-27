@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:panelGroup layout="block" style="background-color: #ccc; padding: 10px;">
+    <h:form>
+        <p:commandButton value="Home" action="/index.xhtml" />
+        <p:commandButton value="Products" action="/products.xhtml" />
+        <p:commandButton value="Clients" action="/clients.xhtml" />
+        <h:commandLink value="Create Order" action="createOrder" />
+    </h:form>
+</h:panelGroup>
+</html>

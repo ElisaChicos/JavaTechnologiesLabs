@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition template="/WEB-INF/templates/page.xhtml">
+
+    <ui:define name="content">
+        <ui:include src="dataView.xhtml">
+            <ui:param name="dataList" value="#{productBean.products}" />
+            <ui:param name="bean" value="#{productBean}" />
+            <ui:param name="dialogTitle" value="Edit Product" />
+            <ui:param name="editTemplate" value="productEdit.xhtml" />
+        </ui:include>
+    </ui:define>
+
+</ui:composition>
+</html>

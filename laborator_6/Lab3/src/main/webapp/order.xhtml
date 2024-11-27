@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Create Order</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+        }
+    </style>
+</h:head>
+<h:body>
+    <h:form>
+        <f:event type="preRenderView" listener="#{orderBean.prepareOrder(clientBean.currentItem)}" />
+
+        <h:outputText value="Available Products" />
+        <h:dataTable value="#{productBean.products}" var="product">
+            <h:column>
+                <f:facet name="header">Product Name</f:facet>
+                <h:outputText value="#{product.name}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Price</f:facet>
+                <h:outputText value="#{product.price}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Current Stock</f:facet>
+                <h:outputText value="#{product.quantity}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Quantity</f:facet>
+                <h:inputText value="#{orderBean.orderQuantities[product.id]}" />
+            </h:column>
+        </h:dataTable>
+        <h:commandButton value="Proceed to Confirmation" action="#{orderBean.loadOrderItems}" />
+    </h:form>
+</h:body>
+</html>
