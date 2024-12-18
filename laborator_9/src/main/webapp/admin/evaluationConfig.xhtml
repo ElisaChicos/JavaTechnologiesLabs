@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Evaluation Config</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel value="Start Time:" />
+            <p:datePicker value="#{evaluationConfigBean.config.start_time}"
+                          pattern="yyyy-MM-dd HH:mm"
+                          showTime="true"
+                          timeOnly="false" />
+
+            <h:outputLabel value="End Time:" />
+            <p:datePicker value="#{evaluationConfigBean.config.end_time}"
+                          pattern="yyyy-MM-dd HH:mm"
+                          showTime="true"
+                          timeOnly="false" />
+        </h:panelGrid>
+
+        <p:commandButton value="Save" action="#{evaluationConfigBean.saveConfig}" update="@form" />
+
+        <h:link value="Back to Admin Dashboard" outcome="/admin/adminDashboard.xhtml" style="margin-left: 10px;" />
+    </h:form>
+</h:body>
+</html>
