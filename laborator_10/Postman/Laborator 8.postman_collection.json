@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "eb1833e7-c0c6-4115-8fd6-70e8943ead44",
+		"name": "Laborator 8",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33907263"
+	},
+	"item": [
+		{
+			"name": "POST REQUEST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"activity\": \"Math\",\n    \"activityType\": \"Course\",\n    \"grade\": 9,\n    \"comment\": \"Excellent!\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/Lab3_war/api/evaluations?teacherId=2&studentId=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Lab3_war",
+						"api",
+						"evaluations"
+					],
+					"query": [
+						{
+							"key": "teacherId",
+							"value": "2"
+						},
+						{
+							"key": "studentId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET REQUEST ALL Evaluation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Lab3_war/api/evaluations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Lab3_war",
+						"api",
+						"evaluations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET REQUEST by Teacher ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Lab3_war/api/evaluations?teacherId=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Lab3_war",
+						"api",
+						"evaluations"
+					],
+					"query": [
+						{
+							"key": "teacherId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET REQUEST by Student ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Lab3_war/api/evaluations?studentId=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Lab3_war",
+						"api",
+						"evaluations"
+					],
+					"query": [
+						{
+							"key": "studentId",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE REQUEST",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"teacher\": {\"id\": 2},\n    \"student\": {\"id\": 3},\n    \"activity\": \"Math\",\n    \"activityType\": \"Course\",\n    \"grade\": 8,\n    \"comment\": \"Improved performance\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/Lab3_war/api/evaluations?evaluationId=6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Lab3_war",
+						"api",
+						"evaluations"
+					],
+					"query": [
+						{
+							"key": "evaluationId",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE REQUEST",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Lab3_war/api/evaluations?evaluationId=9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Lab3_war",
+						"api",
+						"evaluations"
+					],
+					"query": [
+						{
+							"key": "evaluationId",
+							"value": "9"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
